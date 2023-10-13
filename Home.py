@@ -5,7 +5,7 @@ if "df" not in st.session_state:
 if 'target' not in st.session_state:
     st.session_state.target = None
 
-st.subheader("Welcome to the Machine Learning Explorer!")
+st.subheader("Welcome to the Simplify AI Platform!")
 
 st.write("""
 Explore and interact with machine learning models using the Scikit-learn (`sklearn`) library and Neural Networks with `PyTorch`. This platform is tailored for both binary and multi-class classification tasks.

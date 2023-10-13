@@ -1,77 +1,74 @@
 import streamlit as st
-import linear as util
-from sklearn.model_selection import train_test_split
+from Model_Linear import LinearSupportVectorMachineModel, LogisticRegressionModel
 
+
+
+
+st.subheader('Linear Models for Classification')
 
 default_session_state = {
     'df': None,
     'target': None,
-    'model_type': None,
-    'params': None,
-    'split': None
+    'linear_model': None,
+    'test_size': None,
+    'random_state': None,
+    'train' : None,
 }
-
 for key, value in default_session_state.items():
-    if key not in st.session_state:
+    if key not in st.session_state:       
         st.session_state[key] = value
 
 
-app = util.LinearModelApp()
-if app.upload_data():
-    if app.select_target_and_split_data():
-        app.render_models()
+model_type = ['Linear Support Vector Machine', 'Logistic Regression',]
+
+def linear_model():
+
+    def on_click():
+        if st.session_state['temp_linear_model'] is None:
+            st.warning('Please select a model.', icon="⚠️")
+            return
+        if st.session_state['temp_test_size'] is None:
+            st.warning('Please select a test size.', icon="⚠️")
+            return
+        if st.session_state['rand_state'] is None:
+            st.warning('Please select a random state.', icon="⚠️")
+            return
+        st.session_state['linear_model'] = st.session_state['temp_linear_model']
+        st.session_state['test_size'] = st.session_state['temp_test_size']
+        st.session_state['random_state'] = st.session_state['rand_state']
+        st.session_state['train'] = True
+
+    num_classes = len(st.session_state['df'][st.session_state['target']].unique())
+    with st.form(key = 'linear_model_multi'):
+        st.write ('Number of Classes: ', num_classes)
+        st.selectbox("Choose a Model for Classification", model_type, key= 'temp_linear_model')
+        st.number_input("Choose the Test Data Size Ratio", key = 'temp_test_size',
+                                                        value=0.2, step=0.05, min_value=0.05, max_value=0.9)
+        st.number_input("Choose a Random State", key= 'rand_state',
+                                                        value= 42, step=1, min_value=0, max_value=1000)
+        st.form_submit_button('Select', on_click=on_click)
+
+
+if st.session_state['df'] is not None:
+    linear_model()
+else :
+    st.warning('Please Upload Your data via selecting the "Preprocess Data" option in the sidebar to proceed.', icon="⚠️")
+if st.session_state['train']:
+    model_type = st.session_state['linear_model']
+    if model_type == 'Linear Support Vector Machine':
+        model = LinearSupportVectorMachineModel()
+        model.parameters()
+
+    if model_type == 'Logistic Regression':
+        model = LogisticRegressionModel()
+        model.parameters()
+    
+    st.session_state['train'] = False
 
 
 
 
 
-# if "df" not in st.session_state:
-#     st.session_state.df = None
-# if 'target' not in st.session_state:
-#     st.session_state.target = None
-# if 'model_type' not in st.session_state:
-#     st.session_state.model_type = None
-# if 'params' not in st.session_state:
-#     st.session_state.params = None
-# if 'split' not in st.session_state:
-#     st.session_state.split = None
 
 
-
-
-# st.subheader('Linear Models for Classification')
-
-# st.write("""
-# Linear models predict by calculating a weighted sum of input features. For classification, 
-#         they estimate the likelihood of a data point belonging to a specific class. They aim 
-#         to find a line (or in higher dimensions, a hyperplane) that best separates data points
-#         based on their categories. "If the data involves more than two classes, we offer logistic regression. 
-#          For binary classification, linear regression is also an option."
-# """)
-
-
-
-# if 'df' in st.session_state and st.session_state.df is not None and 'target' in st.session_state and st.session_state.target is not None:
-#     st.warning("""Your preprocessing data is saved. You can proceed to train your model.
-#                 If you want to change your data, please click on the button below""")
-#     btn_change = st.button('Change Data')
-#     if btn_change:
-#         util.upload_data()
-#     else:
-
-#         sp_data = util.split_data()
-#         if sp_data:
-#             util.render_models()
-            
-# else: 
-#     is_file_uploaded = util.upload_data()
-#     if is_file_uploaded:
-#         target_selected = util.select_target(st.session_state.df)
-#         if target_selected:
-#             sp_data = util.split_data()
-#             if sp_data:
-#                 util.render_models()
-         
-            
-            
 
