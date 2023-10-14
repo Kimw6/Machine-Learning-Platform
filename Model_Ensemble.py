@@ -46,7 +46,7 @@ class RandomForestClassifierModel:
             
             with col2:
                 st.number_input('min_weight_fraction_leaf', value=0.0, step=0.01, key='min_weight_fraction_leaf')
-                st.selectbox('max_features', ['sqrt', 'log2', 'auto'], key='max_features')
+                st.selectbox('max_features', ['log2', 'sqrt'], key='max_features', index=1)
                 st.number_input('max_leaf_nodes', min_value=2, key='max_leaf_nodes', step=1, value=None)
                 st.number_input('min_impurity_decrease', value=0.0, step=0.01, key='min_impurity_decrease')
                 st.selectbox('bootstrap', BINARY, key='bootstrap')
@@ -104,7 +104,7 @@ class GradientBoostingClassifierModel:
             col1, col2 = st.columns(2)
             
             with col1:
-                st.selectbox('loss', ['deviance', 'exponential', 'log_loss'], key='loss', index=2)
+                st.selectbox('loss', ['exponential', 'log_loss'], key='loss', index=1)
                 st.number_input('learning_rate', value=0.1, step=0.01, min_value=0.01, max_value=1.0, key='learning_rate')
                 st.number_input('n_estimators', value=100, step=1, min_value=1, key='n_estimators')
                 st.number_input('subsample', value=1.0, step=0.01, min_value=0.01, max_value=1.0, key='subsample')
@@ -113,7 +113,7 @@ class GradientBoostingClassifierModel:
                 st.number_input('n_iter_no_change', value=None, step=1, min_value=1, key='n_iter_no_change')
             
             with col2:
-                st.selectbox('criterion', ['friedman_mse', 'mse', 'mae'], key='criterion')
+                st.selectbox('criterion', ['squared_error', 'friedman_mse'], key='criterion', index=1)
                 st.number_input('min_samples_split', value=2, step=1, min_value=2, key='min_samples_split')
                 st.number_input('min_samples_leaf', value=1, step=1, min_value=1, key='min_samples_leaf')
                 st.number_input('min_weight_fraction_leaf', value=0.0, step=0.01, key='min_weight_fraction_leaf')
