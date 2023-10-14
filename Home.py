@@ -6,7 +6,7 @@ if 'target' not in st.session_state:
     st.session_state.target = None
 
 st.subheader("Welcome to the Simplify AI Platform!")
-
+st.warning('Please note that this platform is currently in beta. If you encounter any issues, please contact us at akuroda@uw.edu')
 st.write("""
 Explore and interact with machine learning models using the Scikit-learn (`sklearn`) library and Neural Networks with `PyTorch`. This platform is tailored for both binary and multi-class classification tasks.
 
