@@ -21,9 +21,7 @@ class DecisionTreeClassifierModel:
             'class_weight': None,
             'ccp_alpha': 0.0,
         }
-        for key in self.params.keys():
-            if key not in st.session_state:
-                st.session_state[key] = self.params[key]
+ 
 
     def parameters(self):
         st.write("""***Please adjust the parameters below to configure your Decision Tree Classifier model*** more 
