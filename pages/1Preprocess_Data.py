@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, MinMaxScaler,\
       MaxAbsScaler, RobustScaler, QuantileTransformer
+from sklearn.datasets import load_breast_cancer
+
+def load_data():
+    data = load_breast_cancer()
+    df = pd.DataFrame(data.data, columns=data.feature_names)
+    df['target'] = data.target
+    return df
 
 
 st.session_state.setdefault('df', None)
@@ -12,7 +19,7 @@ st.session_state.setdefault('norm_method', None)
 NORM_TYPE = [None, 'StandardScaler', 'MinMaxScaler', 'MaxAbsScaler', 'RobustScaler', 'QuantileTransformer']
 
 def upload_file():
-    st.write("""Upload your data and preprocess it to gain insights into your data.""")
+    st.write("""***Upload your data and preprocess it to gain insights into your data.***""")
     upload_file = st.file_uploader('Upload your data here', type=['csv', 'xlsx'])
     if upload_file is not None:
         if st.button('Upload'):
@@ -32,7 +39,22 @@ def upload_file():
                 temp_df = temp_df.reset_index(drop=True)
                 st.session_state['df'] = temp_df
             except Exception as e:
-                st.error('Error: {}'.format(e))       
+                st.error('Error: {}'.format(e))  
+    st.write('***Or Use the Breast Cancer Dataset***') 
+    if st.button('Load Breast Cancer Dataset'):
+        try:
+            temp_df = load_data()
+            st.write('Data Uploaded Successfully')
+            st.write('***Data Shape***: ', temp_df.shape)
+            st.write("***Overview of Data***")
+            st.write(temp_df)
+            st.write('***Data Description***')
+            st.write(temp_df.describe())
+            temp_df = temp_df.dropna()
+            temp_df = temp_df.reset_index(drop=True)
+            st.session_state['df'] = temp_df
+        except Exception as e:
+            st.error('Error: {}'.format(e))   
 
 def apply_normalization(normalization_type):
     normalization_functions = {
