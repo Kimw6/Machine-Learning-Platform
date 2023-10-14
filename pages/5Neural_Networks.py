@@ -53,7 +53,7 @@ else :
     st.warning('Please Upload Your data via selecting the "Preprocess Data" option in the sidebar to proceed.', icon="⚠️")
 if st.session_state['train']:
 
-    st.error('need to be implemented with `Pytorch`')
+    st.success('Coming Soon!')
     # model_type = st.session_state['linear_model']
     # if model_type == 'Decision Tree Classifier':
     #     st.write('Imlement')

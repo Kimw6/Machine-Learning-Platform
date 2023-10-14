@@ -36,12 +36,12 @@ else :
     st.warning('Please Upload Your data via selecting the "Preprocess Data" option in the sidebar to proceed.', icon="⚠️")
 if st.session_state['train']:
     model_type = st.session_state['model_type']
-    print(model_type)
+    # print(model_type)
     if model_type == 'KMeans Clustering':
         model = KMeansClusteringModel()
         model.parameters()
     if model_type == 'Dimensionality Reduction-PCA':
-        st.write('Implement PCA here')
+        st.success('Coming Soon!')
 
     st.session_state['train'] = False
 
