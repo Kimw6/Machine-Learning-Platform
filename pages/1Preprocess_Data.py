@@ -40,7 +40,9 @@ def upload_file():
                 st.session_state['df'] = temp_df
             except Exception as e:
                 st.error('Error: {}'.format(e))  
+    st.write()
     st.write('***Or Use the Breast Cancer Dataset***') 
+    st.write('More info on [Breast Cancer Dataset](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic)')
     if st.button('Load Breast Cancer Dataset'):
         try:
             temp_df = load_data()
