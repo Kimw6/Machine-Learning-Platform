@@ -5,7 +5,7 @@ if "df" not in st.session_state:
 if 'target' not in st.session_state:
     st.session_state.target = None
 
-st.subheader("Welcome to the Simplify AI Platform!")
+st.subheader("Welcome to the `SimpleAI` Platform!")
 st.write("")
 st.warning('Please note that this platform is currently in beta. If you encounter any issues, please contact at akuroda@uw.edu')
 st.write("""
