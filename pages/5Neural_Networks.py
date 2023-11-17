@@ -42,7 +42,7 @@ def model_selection():
         st.write('Current Uploaded Data has `{}` classes for `{}`'.format(num_classes, st.session_state['target']))
         st.write('Current size of the data is `{}`'.format(st.session_state['df'].shape))
         st.write('Please select number hidden layers for your Neural Network')
-        st.number_input("Select Number of Hidden Layers", min_value=2, max_value=10, step=1, key='temp_num_layers', value=2)
+        st.number_input("Select Number of Hidden Layers", min_value=1, max_value=10, step=1, key='temp_num_layers', value=2)
         st.number_input("Select Random State", min_value=1, max_value=1000, step=1, key='rand_state', value=42)
         st.form_submit_button('Select', on_click=on_click)
 
@@ -59,6 +59,14 @@ if st.session_state['train']:
     #     st.write('Imlement')
 
     st.session_state['train'] = False
+
+
+
+
+
+
+
+
 
 
 

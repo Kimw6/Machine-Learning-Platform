@@ -7,6 +7,7 @@ import seaborn as sns
 from sklearn import metrics
 from sklearn.tree import export_graphviz
 import graphviz
+from sklearn.tree import plot_tree
 
 def train_model(model, feature_importance=False, decision_tree=False):
     df = st.session_state['df']
@@ -26,14 +27,19 @@ def train_model(model, feature_importance=False, decision_tree=False):
     return (model, y_pred)
 
 def render_tree(model, columns, target):
-    data = export_graphviz(model, out_file=None, 
-                           feature_names=columns, 
-                           class_names=[str(t) for t in target],  
-                           rounded=True,
-                           filled=True, 
-                           special_characters=True)
-    tree = graphviz.Source(data)
-    st.write(tree)
+    fig, ax = plt.subplots(figsize=(12, 8))  # Create a Matplotlib figure and axis
+    plot_tree(model, feature_names=columns, class_names=[str(t) for t in target], filled=True, ax=ax)
+    st.pyplot(fig)
+    
+    
+    # data = export_graphviz(model, out_file=None, 
+    #                        feature_names=columns, 
+    #                        class_names=[str(t) for t in target],  
+    #                        rounded=True,
+    #                        filled=True, 
+    #                        special_characters=True)
+    # tree = graphviz.Source(data)
+    # st.graphviz_chart(tree)
  
 
 
