@@ -1,5 +1,6 @@
 import streamlit as st
 from Model_KMeans import KMeansClusteringModel
+from Model_PCA import PCAModel
 
 st.subheader('Unsupervised Machine Learning')
 
@@ -41,7 +42,8 @@ if st.session_state['train']:
         model = KMeansClusteringModel()
         model.parameters()
     if model_type == 'Dimensionality Reduction-PCA':
-        st.success('Coming Soon!')
+        model = PCAModel()
+        model.parameters()
 
     st.session_state['train'] = False
 
