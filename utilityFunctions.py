@@ -8,6 +8,8 @@ from sklearn import metrics
 from sklearn.tree import plot_tree
 from sklearn.inspection import permutation_importance
 
+# This function trains the model and displays the accuracy,
+# classification report, and confusion matrix
 def train_model(model, feature_importance=False, decision_tree=False):
     df = st.session_state['df']
     target = st.session_state['target']
@@ -26,15 +28,16 @@ def train_model(model, feature_importance=False, decision_tree=False):
     return (model, y_pred)
 
 
-# This need needs to be fixed. 
+# This need needs to be fixed. Future work to render the decision tree
 def render_tree(model, columns, target):
-    fig, ax = plt.subplots(figsize=(12, 8))  # Create a Matplotlib figure and axis
+    fig, ax = plt.subplots(figsize=(12, 8))  
     plot_tree(model, feature_names=columns, class_names=[str(t) for t in target], filled=True, ax=ax)
     st.pyplot(fig)
 
  
 
-
+# This function evaluates the model and displays the accuracy, 
+# classification report, and confusion matrix
 def evaluate_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
@@ -49,24 +52,20 @@ def evaluate_model(model, X_test, y_test):
     return y_pred
 
 
+# Confusion Matrix creates a heatmap of the confusion matrix
 def confusion_matrix(y_test, y_pred):
     cm = metrics.confusion_matrix(y_test, y_pred)
-    
-    # Create a Matplotlib figure
     fig, ax = plt.subplots()
-    
-    # Render the confusion matrix using heatmap
     sns.heatmap(cm, annot=True, fmt='d', ax=ax)
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
     ax.set_title('Confusion Matrix')
-    
-    # Pass the Matplotlib figure to st.pyplot()
     st.pyplot(fig)
     
     return cm
 
 
+# This function calculates the permutation importance of each feature
 def perm_importance(model, X_test, y_test):
     result = permutation_importance(model, X_test, y_test, random_state=42)
     st.write(result.importances_mean)
