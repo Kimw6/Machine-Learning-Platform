@@ -44,7 +44,7 @@ class DecisionTreeClassifierModel:
             st.form_submit_button('Train Model', on_click=self.on_click)
 
     def on_click(self):
-        st.write('Training Decision Tree Classifier Model...')
+        #st.write('Training Decision Tree Classifier Model...')
         self.params = {key: st.session_state[key] for key in self.params.keys()}
         try:
             model = DecisionTreeClassifier(**self.params)
