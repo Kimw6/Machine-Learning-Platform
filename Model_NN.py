@@ -13,7 +13,6 @@ def create_and_train_nn(df, target, num_hidden_layers, random_state):
 
     # Create a Sequential model
     model = Sequential()
-    st.write(X_train.shape[1])
     
 
     units_per_layer = []
@@ -29,7 +28,7 @@ def create_and_train_nn(df, target, num_hidden_layers, random_state):
         units_per_layer.append(total)
     for layer, unit in enumerate(units_per_layer):
         name = 'hidden_layer_{}'.format(layer)
-        model.add(Dense(units=unit, activation='relu', name=name))
+        model.add(Dense(units=unit, activation='relu', name=name))  
 
     num_classes = len(np.unique(y_train))
     activation = 'sigmoid' if num_classes == 2 else 'softmax'
