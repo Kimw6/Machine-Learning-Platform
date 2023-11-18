@@ -6,13 +6,11 @@ if 'target' not in st.session_state:
     st.session_state.target = None
 
 st.subheader("Welcome to the `SimpleAI` Platform!")
-st.write("")
-st.warning('Please note that this platform is currently in beta. If you encounter any issues, please contact at akuroda@uw.edu')
 
 st.write("""
 This platform is designed for students to easily explore the world of machine learning.
 It provides a user-friendly interface for both beginners and experts to interact with machine 
-learning models using Scikit-learn (`sklearn`) and PyTorch. It's tailored for binary and multi-class classification tasks.
+learning models. It's tailored for binary and multi-class classification tasks.
 
 ### Features:
 
@@ -29,3 +27,4 @@ learning models using Scikit-learn (`sklearn`) and PyTorch. It's tailored for bi
 **Dive in, upload your data, and embark on your machine learning journey!**
 """)
 
+st.warning('Please note that this platform is currently in beta. If you encounter any issues, please contact at akuroda@uw.edu')

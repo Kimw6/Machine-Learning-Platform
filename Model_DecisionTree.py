@@ -3,10 +3,11 @@ from sklearn.tree import DecisionTreeClassifier
 from utilityFunctions import train_model
 
 # Constants
-BINARY = [True, False]
 
+# Define a class for the DecisionTreeClassifierModel
 class DecisionTreeClassifierModel:
     def __init__(self):
+        # Set default parameters for the Decision Tree Classifier
         self.params = {
             'criterion': 'gini',
             'splitter': 'best',
@@ -24,6 +25,7 @@ class DecisionTreeClassifierModel:
  
 
     def parameters(self):
+        # Display the parameter options for the Decision Tree Classifier model
         st.write("""***Please adjust the parameters below to configure your Decision Tree Classifier model*** more 
                  info on [DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)""")
         with st.form(key='decision_tree_classifier_form'):
@@ -44,10 +46,12 @@ class DecisionTreeClassifierModel:
             st.form_submit_button('Train Model', on_click=self.on_click)
 
     def on_click(self):
-        #st.write('Training Decision Tree Classifier Model...')
+        # Update the parameters based on user input
         self.params = {key: st.session_state[key] for key in self.params.keys()}
         try:
+            # Create a Decision Tree Classifier model with the updated parameters
             model = DecisionTreeClassifier(**self.params)
+            # Train the model using the train_model function
             train_model(model, decision_tree=True)
             
         except Exception as e:
