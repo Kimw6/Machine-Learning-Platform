@@ -13,26 +13,26 @@ def create_and_train_nn(df, target, num_hidden_layers, random_state):
 
     # Create a Sequential model
     model = Sequential()
+    st.write(X_train.shape[1])
+    
 
+    units_per_layer = []
+    total = 16*num_hidden_layers
+    if total < 128:
+        total = 128
 
-    model.add(Dense(units=64, activation='relu', input_dim=X_train.shape[1]))
-
-
-    # for units in units_per_layer[:num_hidden_layers]:
-    #     model.add(Dense(units=units, activation='relu'))
+    model.add(Dense(units=total, activation='relu', input_dim=X_train.shape[1], name='input_layer'))
     for _ in range(num_hidden_layers):
-        model.add(Dense(units=64, activation='relu'))
+        total = total//2
+        if total < 16:
+            total = 16
+        units_per_layer.append(total)
+    for layer, unit in enumerate(units_per_layer):
+        name = 'hidden_layer_{}'.format(layer)
+        model.add(Dense(units=unit, activation='relu', name=name))
 
-    # Add output layer
     num_classes = len(np.unique(y_train))
     activation = 'sigmoid' if num_classes == 2 else 'softmax'
     model.add(Dense(units=num_classes, activation=activation))
-
-    # Compile the model
     model.compile(optimizer='adam', loss='binary_crossentropy' if num_classes == 2 else 'categorical_crossentropy', metrics=['accuracy'])
-
-    # Train the model
-    #model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
-
-    # Return the trained model
     return model

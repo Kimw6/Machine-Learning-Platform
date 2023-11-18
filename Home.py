@@ -10,8 +10,9 @@ st.write("")
 st.warning('Please note that this platform is currently in beta. If you encounter any issues, please contact at akuroda@uw.edu')
 
 st.write("""
-This platform is designed to provide a simple and intuitive interface for machine learning to empower users of all skill levels to explore the power of machine learning.
-Explore and interact with machine learning models using the Scikit-learn (`sklearn`) library and Neural Networks with `PyTorch`. This platform is tailored for both binary and multi-class classification tasks.
+This platform is designed for students to easily explore the world of machine learning.
+It provides a user-friendly interface for both beginners and experts to interact with machine 
+learning models using Scikit-learn (`sklearn`) and PyTorch. It's tailored for binary and multi-class classification tasks.
 
 ### Features:
 
