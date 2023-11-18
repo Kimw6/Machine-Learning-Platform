@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import seaborn as sns
 from sklearn import metrics
-from sklearn.tree import export_graphviz
-import graphviz
 from sklearn.tree import plot_tree
 from sklearn.inspection import permutation_importance
 
