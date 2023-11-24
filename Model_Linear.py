@@ -52,7 +52,7 @@ class LinearSupportVectorMachineModel:
 
     def on_click(self):
         self.params = {key: st.session_state[key] for key in self.params.keys()}
-        st.write('Training Linear Support Vector Machine Model...')
+        #st.write('Training Linear Support Vector Machine Model...')
         try :
             # st.write(st.session_state['df'])
             model = LinearSVC(**self.params)
@@ -109,7 +109,7 @@ class LogisticRegressionModel:
             st.form_submit_button('Train Model', on_click=self.on_click)
 
     def on_click(self):
-        st.write('Training Logistic Regression Model...')
+        #st.write('Training Logistic Regression Model...')
         self.params = {key: st.session_state[key] for key in self.params.keys()}
         try:
             model = LogisticRegression(**self.params)
