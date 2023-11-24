@@ -46,14 +46,23 @@ if st.session_state['train']:
     model_type = st.session_state['model_type']
     
     if model_type == 'KMeans Clustering':
-        model = KMeansClusteringModel()
-        model.parameters()
+        try:
+            model = KMeansClusteringModel()
+            model.parameters()
+        except Exception as e:
+            st.error(e)
+        finally:
+            st.session_state['train'] = False
     
     if model_type == 'Dimensionality Reduction-PCA':
-        model = PCAModel()
-        model.parameters()
-
-    st.session_state['train'] = False
+        try:
+            model = PCAModel()
+            model.parameters()
+        except Exception as e:
+            st.error(e)
+        finally:
+            st.session_state['train'] = False
+    
 
 
 

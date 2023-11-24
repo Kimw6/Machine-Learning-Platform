@@ -55,7 +55,7 @@ class RandomForestClassifierModel:
 
     def on_click(self):
         self.params = {key: st.session_state[key] for key in self.params.keys()}
-        st.write('Training Random Forest Classifier Model...')
+        #st.write('Training Random Forest Classifier Model...')
         try:
             model = RandomForestClassifier(**self.params)
             train_model(model)
@@ -124,7 +124,7 @@ class GradientBoostingClassifierModel:
 
     def on_click(self):
         self.params = {key: st.session_state[key] for key in self.params.keys()}
-        st.write('Training Gradient Boosting Classifier Model...')
+        #st.write('Training Gradient Boosting Classifier Model...')
         try:
             model = GradientBoostingClassifier(**self.params)
             train_model(model)
@@ -167,7 +167,7 @@ class AdaBoostClassifierModel:
         # if st.session_state['base_estimator']:
         #     self.params['base_estimator'] = eval(st.session_state['base_estimator'])
         
-        st.write('Training AdaBoost Classifier Model...')
+        #st.write('Training AdaBoost Classifier Model...')
         try:
             model = AdaBoostClassifier(**self.params)
             train_model(model)

@@ -97,7 +97,8 @@ def process_data():
             return
         st.session_state['target'] = st.session_state['temp_target']
 
-    st.warning('***Note***: This will remove all rows with missing values')
+    st.warning("""***Note***: This will remove all rows with missing values. For the 
+               For the breast cancer dataset, target variable is 'target' """)
     cols = st.session_state['df'].columns
     with st.form(key='process_data'):
         st.multiselect('Select the columns to remove', cols, key='col_remove')
