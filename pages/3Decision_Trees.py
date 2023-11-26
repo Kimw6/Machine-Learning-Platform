@@ -3,7 +3,7 @@ import streamlit as st
 from Model_DecisionTree import DecisionTreeClassifierModel
 
 # Displaying the subheader
-st.subheader('Decision Trees Models for Classification')
+st.subheader('`Decision Trees Models for Classification`')
 
 # Defining the default session state
 default_session_state = {

@@ -12,7 +12,7 @@ def load_model():
 
 model = load_model()
 
-st.title("ResNet50 Image Classification")
+st.subheader("`Image Classification with ResNet50`")
 
 uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
@@ -26,22 +26,22 @@ def process_image(image):
 
 def make_prediction(image, model):
     predictions = model.predict(image)
-    return decode_predictions(predictions, top=1)[0][0]
+    return decode_predictions(predictions, top=5)
 
 if uploaded_image is not None:
     image = Image.open(uploaded_image)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
-    
+    st.image(image, caption="Uploaded Image", use_column_width=True)  
     processed_image = process_image(image)
 
     try:
         with st.spinner("Predicting..."):
             label = make_prediction(processed_image, model)
-            st.write(label)
+
     except Exception as e:
         st.error(f"Error: {e}")
     else:
-        st.write(f"***Predicted class: `{label[1]}`***")
-        st.write(f"***Confidence: {label[2]:.2%}***")
+        st.write("***Top 5 predictions:***")
+        for i in label[0]:
+            st.write(f"{i[1]}: {i[2]*100:.2f}%")
 else:
     st.write("Please upload an image.")

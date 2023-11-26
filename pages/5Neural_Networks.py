@@ -3,7 +3,7 @@ import streamlit as st
 from Model_NN import create_and_train_nn
 
 # Display subheader
-st.subheader('Build Your Custom Neural Network for Classification')
+st.subheader('`Build Your Custom Neural Network for Classification`')
 
 # Define default session state variables
 default_session_state = {

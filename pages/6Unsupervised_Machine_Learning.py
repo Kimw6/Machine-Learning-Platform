@@ -3,7 +3,7 @@ from Model_KMeans import KMeansClusteringModel
 from Model_PCA import PCAModel
 
 # Display subheader for the section
-st.subheader('Unsupervised Machine Learning')
+st.subheader("`Unsupervised Machine Learning`")
 
 # Define default session state variables
 default_session_state = {
