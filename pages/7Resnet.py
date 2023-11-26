@@ -5,7 +5,7 @@ from tensorflow.keras.models import Model
 from PIL import Image
 
 # Load the pre-trained ResNet50 model
-@st.cache_data()
+
 def load_model():
     model = tf.keras.applications.resnet50.ResNet50(weights='imagenet')
     return model
@@ -29,16 +29,15 @@ def make_prediction(image, model):
     return decode_predictions(predictions, top=1)[0][0]
 
 if uploaded_image is not None:
-    # Display the uploaded image
     image = Image.open(uploaded_image)
     st.image(image, caption="Uploaded Image", use_column_width=True)
     
     processed_image = process_image(image)
 
-    # Make predictions
     try:
         with st.spinner("Predicting..."):
             label = make_prediction(processed_image, model)
+            st.write(label)
     except Exception as e:
         st.error(f"Error: {e}")
     else:
