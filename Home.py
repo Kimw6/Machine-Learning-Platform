@@ -5,14 +5,15 @@ if "df" not in st.session_state:
 if 'target' not in st.session_state:
     st.session_state.target = None
 
-st.subheader("Welcome to the `SimpleAI` Platform!")
+st.subheader("`Welcome to the Machine Learning Studio`")
 
 st.write("""
 This platform is designed for students to easily explore the world of machine learning.
 It provides a user-friendly interface for both beginners and experts to interact with machine 
-learning models. It's tailored for binary and multi-class classification tasks.
+learning models. It's tailored for binary and multi-class classification tasks. It also provides
+links to resources and tutorials to help you get started with machine learning.
 
-### Features:
+### `Features`
 
 **Data Preprocessing**: Equip yourself with a suite of preprocessing tools. Visualize data distributions, detect class imbalances, and normalize for optimal performance.
 
@@ -23,6 +24,8 @@ learning models. It's tailored for binary and multi-class classification tasks.
 **Model Training & Evaluation**: Effortlessly train models and evaluate their performance with intuitive metrics and interactive visualizations.
 
 **Hyperparameter Tuning**: Refine your models with a user-friendly slider-based interface for hyperparameter adjustments.
+         
+
 
 **Dive in, upload your data, and embark on your machine learning journey!**
 """)
