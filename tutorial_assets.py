@@ -172,9 +172,29 @@ Res_Nets = {
     ],
 
 }
+Data_Processing_Normalization = {
+    "video_links": [
+        {
+            "title": "***Normalization***",
+            "url": "https://www.youtube.com/watch?v=FDCfw-YqWTE",
+        },
+    ],
+    "hyperlinks": [
+        {
+            "title": "***Wikipedia***",
+            "url": "https://en.wikipedia.org/wiki/Normalization_(statistics)",
+        },
+        {
+            "title": "***Scikit-Learn***",
+            "url": "https://scikit-learn.org/stable/modules/preprocessing.html#normalization",
+        },
+    ],
+
+}
 
 models.update({"Linear Algebra": Linear_Alebra})
 models.update({"Calculus": Calculus})
+models.update({"Data Processing & Normalization": Data_Processing_Normalization})
 models.update({"Linear Regression": Linear_Regression})
 models.update({"Linear Support Vector ": Linear_SVC})
 models.update({"Decision Tree": Decision_Tree})
