@@ -9,7 +9,7 @@ import streamlit as st
 from Model_Linear import LinearSupportVectorMachineModel, LogisticRegressionModel
 
 # Displaying a subheader for the linear models for classification
-st.subheader('Linear Models for Classification')
+st.subheader('`Linear Models for Classification`')
 
 # Defining the default session state
 default_session_state = {

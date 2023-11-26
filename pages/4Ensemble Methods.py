@@ -2,7 +2,7 @@ import streamlit as st
 from Model_Ensemble import RandomForestClassifierModel, GradientBoostingClassifierModel, AdaBoostClassifierModel
 
 # Display subheader for the section
-st.subheader('Ensemble Methods for Classification')
+st.subheader("`Ensemble Methods for Classification`")
 
 # Define default session state variables
 default_session_state = {

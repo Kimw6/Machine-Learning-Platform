@@ -23,6 +23,7 @@ NORM_TYPE = [None, 'StandardScaler', 'MinMaxScaler', 'MaxAbsScaler', 'RobustScal
 
 # Function to upload file and preprocess data
 def upload_file():
+    st.subheader("`Upload and Preprocess Data`")
     st.write("""***Upload your data and preprocess it to gain insights into your data.***""")
     upload_file = st.file_uploader('Upload your data here', type=['csv', 'xlsx'])
     if upload_file is not None:
