@@ -4,7 +4,6 @@ from tensorflow.keras.applications.resnet50 import preprocess_input, decode_pred
 from tensorflow.keras.models import Model
 from PIL import Image
 
-# Load the pre-trained ResNet50 model
 
 def load_model():
     model = tf.keras.applications.resnet50.ResNet50(weights='imagenet')
@@ -13,7 +12,7 @@ def load_model():
 model = load_model()
 
 st.subheader("`Image Classification with ResNet50`")
-
+st.write("This is pre-trained on the ImageNet dataset. More information about the dataset can be found [here](http://www.image-net.org/).")
 uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 def process_image(image):

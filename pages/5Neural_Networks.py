@@ -35,7 +35,7 @@ def model_selection():
         st.number_input("Number of Epochs", min_value=1, max_value=100, step=1, key='epochs', value=10)
         st.form_submit_button('Select', on_click=on_click)
 
-if st.session_state['df'] is not None:
+if st.session_state['df'] is not None and st.session_state['target'] is not None:
     model_selection()
 else:
     st.warning('Please Upload Your data via selecting the "Preprocess Data" option in the sidebar to proceed.', icon="⚠️")
