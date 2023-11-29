@@ -18,7 +18,11 @@ def train_model(model, feature_importance=False, decision_tree=False):
     X = df.drop(target, axis=1)
     y = df[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
-    model.fit(X_train, y_train)
+    try:
+        model.fit(X_train, y_train)
+    except Exception as e:
+        handle_errors(e)
+        return
     y_pred = evaluate_model(model, X_test, y_test)
     if feature_importance:
         st.write('Feature Importance')
@@ -72,5 +76,5 @@ def perm_importance(model, X_test, y_test):
 
 
 def handle_errors(e):
-    st.error('Error: {}'.format(e))
+    st.warning('Something went wrong. Check your data set and try again. May contain non-numeric values.')
   
