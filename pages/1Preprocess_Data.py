@@ -30,7 +30,9 @@ def upload_file():
         if st.button('Upload'):
             try:
                 temp_df = None
-                if upload_file.name.endswith('csv'):
+                extentension = upload_file.name.split('.')[-1]
+                extentension = extentension.lower()
+                if extentension == 'csv':
                     temp_df = pd.read_csv(upload_file)
                 else:
                     temp_df = pd.read_excel(upload_file)

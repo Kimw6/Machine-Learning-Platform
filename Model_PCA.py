@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 from sklearn.decomposition import PCA
 import pandas as pd
 
