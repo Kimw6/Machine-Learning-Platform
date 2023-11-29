@@ -14,8 +14,6 @@ import matplotlib.pyplot as plt
 def create_model(df, target, num_hidden_layers, random_state):
 
     X_train, X_test, y_train, y_test = train_test_split(df.drop(target, axis=1), df[target], test_size=0.2, random_state=random_state)
-
-    # Create a Sequential model
     model = Sequential()
     
 
@@ -55,7 +53,6 @@ def train_model(model, epochs, random_state):
             y_pred.append(0)
         else:
             y_pred.append(1)
-    # confusion_matrix(y_test, y_pred)
     plot_loss(loss)
     plot_loss(loss, type='accuracy')
 

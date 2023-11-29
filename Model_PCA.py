@@ -2,9 +2,8 @@ import streamlit as st
 from sklearn.decomposition import PCA
 import pandas as pd
 
-# This class is used to create a PCA model
+
 class PCAModel:
-    # Initialize the parameters
     def __init__(self):
         self.params = {
             'n_components': None,
@@ -17,7 +16,6 @@ class PCAModel:
             'power_iteration_normalizer': 'auto',
             'random_state': None,
         }
-    # get the parameters from the user
     def parameters(self):
         st.write("""***Please adjust the parameters below to configure your PCA model.*** More 
                  info on [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)""")
@@ -40,7 +38,7 @@ class PCAModel:
                 st.checkbox('Whiten', key='whiten')
                 
             st.form_submit_button('Apply PCA', on_click=self.on_click)
-    # event handler for the button click
+
     def on_click(self):
         self.params = {key: st.session_state[key] for key in self.params.keys()}
       
@@ -50,12 +48,9 @@ class PCAModel:
             st.write('***PCA model is trained successfully!***')
         except Exception as e:
             st.error(e)
-        
-    # train the model and display the transformed data and download the transformed data
     def train_model(self, pca):
         X = st.session_state['df'].drop(st.session_state['target'], axis=1)
 
-        # Apply PCA on the example data
         pca.fit(X)
         components= pca.transform(X)
 

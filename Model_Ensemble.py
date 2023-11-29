@@ -164,10 +164,6 @@ class AdaBoostClassifierModel:
 
     def on_click(self):
         self.params = {key: st.session_state[key] for key in self.params.keys()}
-        # if st.session_state['base_estimator']:
-        #     self.params['base_estimator'] = eval(st.session_state['base_estimator'])
-        
-        #st.write('Training AdaBoost Classifier Model...')
         try:
             model = AdaBoostClassifier(**self.params)
             train_model(model)

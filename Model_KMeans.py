@@ -82,17 +82,11 @@ class KMeansClusteringModel:
 
     def confusion_matrix(self, y_test, y_pred):
         cm = metrics.confusion_matrix(y_test, y_pred)
-        
-        # Create a Matplotlib figure
         fig, ax = plt.subplots()
-        
-        # Render the confusion matrix using heatmap
         sns.heatmap(cm, annot=True, fmt='d', ax=ax)
         ax.set_xlabel('Predicted')
         ax.set_ylabel('Actual')
         ax.set_title('Confusion Matrix')
-        
-        # Pass the Matplotlib figure to st.pyplot()
         st.pyplot(fig)
         
 
