@@ -43,5 +43,4 @@ if uploaded_image is not None:
         st.write("***Top 5 predictions:***")
         for i in label[0]:
             st.write(f"{i[1]}: {i[2]*100:.2f}%")
-else:
-    st.write("Please upload an image.")
+

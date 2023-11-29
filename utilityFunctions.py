@@ -69,3 +69,8 @@ def confusion_matrix(y_test, y_pred):
 def perm_importance(model, X_test, y_test):
     result = permutation_importance(model, X_test, y_test, random_state=42)
     st.write(result.importances_mean)
+
+
+def handle_errors(e):
+    st.error('Error: {}'.format(e))
+  
