@@ -7,6 +7,6 @@ Pillow
 scikit-learn
 scipy
 seaborn
-streamlit
+install -U streamlit
 tensorflow
 
