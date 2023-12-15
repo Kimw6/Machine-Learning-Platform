@@ -1,5 +1,16 @@
 
-keras
+# keras
+# matplotlib
+# numpy
+# pandas
+# Pillow
+# scikit-learn
+# scipy
+# seaborn
+# streamlit
+# tensorflow
+
+
 matplotlib
 numpy
 pandas
@@ -9,4 +20,3 @@ scipy
 seaborn
 streamlit
 tensorflow
-
