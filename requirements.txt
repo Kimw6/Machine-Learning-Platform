@@ -1,5 +1,16 @@
 
-keras
+# keras
+# matplotlib
+# numpy
+# pandas
+# Pillow
+# scikit-learn
+# scipy
+# seaborn
+# streamlit
+# tensorflow
+
+
 matplotlib
 numpy
 pandas
@@ -7,6 +18,5 @@ Pillow
 scikit-learn
 scipy
 seaborn
-install -U streamlit
+streamlit
 tensorflow
-
