@@ -29,3 +29,13 @@ pip install -r requirements.txt
 streamlit run Home.py
 
 
+## In the server, to restart
+
+$sudo systemctl restart akuroda.service
+ 
+## To check the status:
+ 
+$sudo systemctl status akuroda.service
+ 
+
+
